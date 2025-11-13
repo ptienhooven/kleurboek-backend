@@ -8,9 +8,12 @@ require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3001;
-
-// Middleware
-app.use(cors());
+// Middleware - Allow all origins for testing
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type']
+}));
 app.use(express.json({ limit: '50mb' }));
 
 // OpenAI configuratie
